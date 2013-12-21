@@ -4,7 +4,7 @@ fast_float_32_avr
 32 bit floating point math implementation optimized for AVR microcontrollers
 
 This software is an implementation of floating point numbers wich allows the user to make basic 
-operations on an AVR micocontroller.
+operations on float type faster than with the compiler on an AVR micocontroller.
 
 =================
 
@@ -22,9 +22,14 @@ Running the main.cpp to test the software<br/>
 1-Enter the makefile's folder in terminal<br/>
 2-Run with `make all`
 
+Using this software as a library in your project
+1-Copy the FastFloat files (FastFloat.h, FastFloat.cpp, FastFloat_Assembly.S) in your project
+2-Add the .cpp and the .S in the objects of the makefile (or use the provided makefile)
+
 The software may be used with the arduino environment<br/>
 Including the FastFloat software as a library in the arduino environment<br/>
-Follows the instructions for a manual installation at this link : http://arduino.cc/en/Tutorial/ArduinoISP
+1-Follows the instructions for a manual installation at this link : http://arduino.cc/en/Tutorial/ArduinoISP<br/>
+2-Include the library in your sketch and use it!
 Warning: Copy only the FastFloat files in the library folder (FastFloat.h, FastFloat.cpp, FastFloat_Assembly.S)
 
 The provided main.cpp is an exemple that allows to test FastFloat class' function.
@@ -40,7 +45,11 @@ all use the same instruction set as the one tested, they should work.
 
 ===============
 
-Future work:
+Performance:
 
-Some functions are declared but are not programmed yet. I plan on enlarging the functions avalaible.
+The performances of this software are compared with the float type implementation from avr-gcc 4.8.1
+
+#clock cycles FastFloat avr-gcc<br/>
+addition      70        150
+
 
