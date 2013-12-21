@@ -1,0 +1,14 @@
+# Compiled object files.
+*.slo
+*.lo
+*.o
+*.elf
+*.hex
+
+# Project files.
+*.xcodeproj
+
+# Mangler.
+float_32/mangler.cpp
+float_32/mangler.s
+
