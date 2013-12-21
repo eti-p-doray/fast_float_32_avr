@@ -49,7 +49,7 @@ Performance:
 
 The performances of this software are compared with the float type implementation from avr-gcc 4.8.1
 
-#clock cycles FastFloat avr-gcc<br/>
+No. clock cycles FastFloat avr-gcc<br/>
 addition      70        150
 
 
