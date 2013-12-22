@@ -20,7 +20,7 @@ Instructions:
 
 Running the main.cpp to test the software<br/>
 1-Enter the makefile's folder in terminal<br/>
-2-Run with 'make'
+2-Run with `make`
 
 Using this software as a library in your project<br/>
 1-Copy the FastFloat files (FastFloat.h, FastFloat.cpp, FastFloat_Assembly.S) in your project<br/>
