@@ -17,13 +17,11 @@ using namespace fast_float_32_avr;
 void main(void)
 {
     USART::init();
-
-    
-    FastFloat a = 4.000f;
-    FastFloat b = 0.971f;
-    FastFloat c;
-    uint16_t i;
-    
+    FastFloat a = 1.5f;
+    FastFloat b = 2.0f;
+    FastFloat c = 0;
+    uint16_t i = 0;
+        
     USART::write(0x47);
     USART::write(0xB1);
     USART::write(uint8_t(a.get()>>24));
@@ -34,16 +32,12 @@ void main(void)
     USART::write(uint8_t(b.get()>>16));
     USART::write(uint8_t(b.get()>>8));
     USART::write(uint8_t(b.get()));
-    //volatile float d = 1.3;
-    //volatile float e = i;
-    //volatile float f;
     
     TCCR1A = 0x00;
     TCCR1B = 0x01;
     TCNT1 = 0x00;
 
-    c = a-b;
-    //c = b;
+    c = a+b;
     i = TCNT1;
     
     USART::write(uint8_t(c.get()>>24));
@@ -52,7 +46,6 @@ void main(void)
     USART::write(uint8_t(c.get()));
     USART::write(uint8_t(i>>8));
     USART::write(uint8_t(i));
-    
     
     
     for(;;){

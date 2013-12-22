@@ -732,20 +732,20 @@ _ZN17fast_float_32_avrplENS_9FastFloatES0_:
 	brlo   L_plus_ExpDs9
         cpi     ExpD,   0x11
         brsh   L_plus_ExpDb11
-            subi    ExpD,   0x09
+            subi    ExpD,   0x08
             mov     Cop2,   Bop2
             mov     Bop2,   Aop2
             clr     Aop2
             rjmp    L_plus_ExpDs9
-            L_plus_ExpDb11:
-                cpi    ExpD,    0x19
-                brlo   L_plus_ExpDs19
-                    ret
-                L_plus_ExpDs19:
-                subi    ExpD,   0x11
-                mov     Bop2,   Aop2
-                clr     Aop2
-                clr     Cop2
+        L_plus_ExpDb11:
+            cpi    ExpD,    0x19
+            brlo   L_plus_ExpDs19
+                ret
+            L_plus_ExpDs19:
+            subi    ExpD,   0x10
+            mov     Cop2,   Aop2
+            clr     Aop2
+            clr     Bop2
 	L_plus_ExpDs9:
      
 	cpi    ExpD,   0x05
@@ -774,18 +774,18 @@ _ZN17fast_float_32_avrplENS_9FastFloatES0_:
         brsh    L_plus_ExpDb7
             cpi     ExpD,    0x06
             brsh    L_plus_ExpDb6
-                ldi     ShiftV, 0x08
+                ldi     ShiftV, 0x10
                 rjmp    L_plus_ShiftVset//11
             L_plus_ExpDb6:
-                ldi     ShiftV, 0x04
+                ldi     ShiftV, 0x08
                 rjmp    L_plus_ShiftVset
         L_plus_ExpDb7:
             cpi     ExpD,   0x08
             brlo    L_plus_ExpDs8
-                ldi     ShiftV, 0x01
+                ldi     ShiftV, 0x02
                 rjmp    L_plus_ShiftVset
             L_plus_ExpDs8:
-                ldi     ShiftV, 0x02
+                ldi     ShiftV, 0x04
 
     L_plus_ShiftVset:
 	mul    Aop2,   ShiftV
