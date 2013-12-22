@@ -20,7 +20,7 @@ Instructions:
 
 Running the main.cpp to test the software<br/>
 1-Enter the makefile's folder in terminal<br/>
-2-Run with --make
+2-Run with 'make'
 
 Using this software as a library in your project<br/>
 1-Copy the FastFloat files (FastFloat.h, FastFloat.cpp, FastFloat_Assembly.S) in your project<br/>
@@ -47,7 +47,7 @@ all use the same instruction set as the one tested, they should work.
 
 Performance:
 
-The performances of this software are compared with the float type implementation from avr-gcc 4.8.1
+The performances of this software are compared with the default float type implementation from avr-gcc 4.8.1
 The microcontroller counter is used to compute the execution time. Since the execution time of
 a float operation vary in each case, the \# clock cycle is an average of 256 operations with random numbers.
 
@@ -80,7 +80,6 @@ a float operation vary in each case, the \# clock cycle is an average of 256 ope
     </tr>
     </table>
 </MTMarkdownOptions>
-No. clock cycles FastFloat avr-gcc<br/>
-addition      70        150
+
 
 
