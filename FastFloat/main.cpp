@@ -1,8 +1,6 @@
-/* Name: main.c
- * Author: <insert your name here>
- * Copyright: <insert your copyright message here>
- * License: <insert your license reference here>
- */
+// Copyright 2013 Etienne Pierre-Doray. All rights reserved.
+// Use of this source code is governed by a GNU General Public
+//License that can be found in the LICENSE file.
 
 #include "stdint.h"
 #include <avr/io.h>
@@ -17,14 +15,13 @@ using namespace fast_float_32_avr;
 void main(void)
 {
     USART::init();
-    FastFloat a = 1.5f;
+    FastFloat a = 1.5f;//This is the simpliest way to set a FastFloat variable
     FastFloat b = 2.0f;
     FastFloat c = 0;
-    uint16_t i = 0;
         
-    USART::write(0x47);
+    USART::write(0x47);//This is the initializer I use to communicate with my computer
     USART::write(0xB1);
-    USART::write(uint8_t(a.get()>>24));
+    USART::write(uint8_t(a.get()>>24));//This is a "temporary" way to send data throug serial
     USART::write(uint8_t(a.get()>>16));
     USART::write(uint8_t(a.get()>>8));
     USART::write(uint8_t(a.get()));
@@ -33,12 +30,14 @@ void main(void)
     USART::write(uint8_t(b.get()>>8));
     USART::write(uint8_t(b.get()));
     
+    uint16_t i = 0;
     TCCR1A = 0x00;
     TCCR1B = 0x01;
-    TCNT1 = 0x00;
+    TCNT1 = 0x00;//The counter registers are set for test purpose
 
     c = a+b;
-    i = TCNT1;
+    
+    i = TCNT1;//This gives the # clock cycle of the operation
     
     USART::write(uint8_t(c.get()>>24));
     USART::write(uint8_t(c.get()>>16));

@@ -15,17 +15,17 @@ namespace fast_float_32_avr {
 
 class FastFloat {
 public:
-    inline FastFloat() {};
-    inline FastFloat(const float value);
-    inline FastFloat(const int32_t value);
-    inline FastFloat(const int16_t value);
-    inline FastFloat(const int8_t value);
-    inline FastFloat(const uint8_t nexp, const uint8_t nlsb, const int16_t nmsb);
+    inline FastFloat() {};//Default constructor
+    inline FastFloat(const float value);//Constructor which takes a float type
+    inline FastFloat(const int32_t value);//Constructor which takes a int32_t type
+    inline FastFloat(const int16_t value);//Constructor which takes a int16_t type
+    inline FastFloat(const int8_t value);//Constructor which takes a int8_t type
+    inline FastFloat(const uint8_t nexp, const uint8_t nlsb, const int16_t nmsb);//Constructor which takes raw byte
     
-    inline operator float();
-    inline operator int32_t();
-    inline operator int16_t();
-    inline operator int8_t();
+    inline operator float();//Conversion operator to float type
+    inline operator int32_t();//Conversion operator to int32_t type
+    inline operator int16_t();//Conversion operator to int16_t type
+    inline operator int8_t();//Conversion operator to int8_t type
     
     inline FastFloat& operator=(const FastFloat value);
     inline FastFloat& operator=(const float value);
