@@ -113,61 +113,13 @@ _ZN17fast_float_32_avr9FastFloat11toFastFloatEl:
 
     L_int32toffloat_denorms8:
 
-    cpi    Aans,    0x10
-    brlo   L_int32toffloat_denormb4
-        dec     Eans
-        lsl     Dans
-        rol     Cans
-        rol     Bans
-        rol     Aans
-        brmi    L_int32toffloat_ansnorm
-        dec     Eans
-        lsl     Dans
-        rol     Cans
-        rol     Bans
-        rol     Aans
-        brmi    L_int32toffloat_ansnorm
-        dec     Eans
-        lsl     Dans
-        rol     Cans
-        rol     Bans
-        rol     Aans
-        rjmp    L_int32toffloat_ansnorm
-    L_int32toffloat_denormb4:
-        cpi     Aans,    0x04
-        brlo    L_int32toffloat_denormb6
-            cpi     Aans,    0x08
-            brlo    L_int32toffloat_denormb5
-                ldi     ShiftV,  0x10
-                subi    Eans,    0x04
-                rjmp    L_int32toffloat_normset
-            L_int32toffloat_denormb5:
-                ldi    ShiftV,  0x20
-                subi   Eans,    0x05
-                rjmp   L_int32toffloat_normset
-        L_int32toffloat_denormb6:
-            cpi    Aans,    0x02
-            brlo   L_int32toffloat_denormb7
-                ldi    ShiftV,  0x40
-                subi   Eans,    0x06
-                rjmp   L_int32toffloat_normset
-            L_int32toffloat_denormb7:
-                ldi    ShiftV,  0x80
-                subi   Eans,    0x07
-        L_int32toffloat_normset:
-
-        mul     Bans,    ShiftV
-        movw    Btp,   r0
-        mul     Dans,    ShiftV
-        mov     Ctp,   r1
-        mul     Cans,    ShiftV
-        add     Ctp,   r0
-        add     Btp,   r1
-        mul     Aans,    ShiftV
-        add     Atp,   r0
-        movw    Bans,   Btp
-        mov     Cans,   Ctp
-        clr     r1
+    L_int32toffloat_ansnnorm:
+    dec     Eans
+    lsl     Dans
+    rol     Cans
+    rol     Bans
+    rol     Aans
+    brpl    L_int32toffloat_ansnnorm
 
 L_int32toffloat_ansnorm:
     bld     Aans,   7
@@ -221,49 +173,11 @@ _ZN17fast_float_32_avr9FastFloat11toFastFloatEi:
 
     L_int16toffloat_denorms8:
 
-    cpi    Dans,    0x10
-    brlo   L_int16toffloat_denormb4
-        dec     Eans
-        lsl     Bans
-        rol     Aans
-        brmi    L_int16toffloat_ansnorm
-        dec     Eans
-        lsl     Bans
-        rol     Aans
-        brmi    L_int16toffloat_ansnorm
-        dec     Eans
-        lsl     Bans
-        rol     Aans
-        rjmp    L_int16toffloat_ansnorm
-    L_int16toffloat_denormb4:
-        cpi     Aans,    0x04
-        brlo    L_int16toffloat_denormb6
-            cpi     Aans,    0x08
-            brlo    L_int16toffloat_denormb5
-                ldi     ShiftV,  0x10
-                subi    Eans,    0x04
-                rjmp    L_int16toffloat_normset
-            L_int16toffloat_denormb5:
-                ldi    ShiftV,  0x20
-                subi   Eans,    0x05
-                rjmp   L_int16toffloat_normset
-        L_int16toffloat_denormb6:
-            cpi    Aans,    0x02
-            brlo   L_int16toffloat_denormb7
-                ldi    ShiftV,  0x40
-                subi   Eans,    0x06
-                rjmp   L_int16toffloat_normset
-            L_int16toffloat_denormb7:
-                ldi    ShiftV,  0x80
-                subi   Eans,    0x07
-        L_int16toffloat_normset:
-
-        mul     Bans,    ShiftV
-        movw    Btp,   r0
-        mul     Aans,    ShiftV
-        add     Atp,   r0
-        movw    Bans,   Btp
-        clr     r1
+    L_int16toffloat_ansnnorm:
+    dec     Eans
+    lsl     Bans
+    rol     Aans
+    brpl    L_int16toffloat_ansnnorm
 
     L_int16toffloat_ansnorm:
     bld     Aans,   7
@@ -304,43 +218,10 @@ _ZN17fast_float_32_avr9FastFloat11toFastFloatEa:
 
     L_int8toffloat_ansnnul:
 
-    cpi    Dans,    0x10
-    brlo   L_int8toffloat_denormb4
-        dec     Eans
-        lsl     Aans
-        brmi    L_int8toffloat_ansnorm
-        dec     Eans
-        lsl     Aans
-        brmi    L_int8toffloat_ansnorm
-        dec     Eans
-        lsl     Aans
-        rjmp    L_int8toffloat_ansnorm
-    L_int8toffloat_denormb4:
-        cpi     Aans,    0x04
-        brlo    L_int8toffloat_denormb6
-            cpi     Aans,    0x08
-            brlo    L_int8toffloat_denormb5
-                ldi     ShiftV,  0x10
-                subi    Eans,    0x04
-                rjmp    L_int8toffloat_normset
-            L_int8toffloat_denormb5:
-                ldi    ShiftV,  0x20
-                subi   Eans,    0x05
-                rjmp   L_int8toffloat_normset
-        L_int8toffloat_denormb6:
-            cpi    Aans,    0x02
-            brlo   L_int8toffloat_denormb7
-                ldi    ShiftV,  0x40
-                subi   Eans,    0x06
-                rjmp   L_int8toffloat_normset
-            L_int8toffloat_denormb7:
-                ldi    ShiftV,  0x80
-                subi   Eans,    0x07
-        L_int8toffloat_normset:
-
-        mul     Aans,    ShiftV
-        mov    Aans,   r0
-        clr     r1
+    L_int8toffloat_ansnnorm:
+    dec     Eans
+    lsl     Aans
+    brpl    L_int8toffloat_ansnnorm
 
     L_int8toffloat_ansnorm:
     bld     Aans,   7
@@ -442,59 +323,15 @@ _ZN17fast_float_32_avr9FastFloat9toint32_tEv:
                 clr     Aans
 
 	L_ffloattoint32_Expb18:
-    subi    Eans,   0x04
-    brmi   L_ffloattoint32_Expneg
-        subi    Eans,   0x04
-        breq    L_ffloattoint32_Mantshifted//5
-        lsr     Aans
-        ror     Bans
-        ror     Cans
-        ror     Dans
-        inc     Eans
-        breq    L_ffloattoint32_Mantshifted//11
-        lsr     Aans
-        ror     Bans
-        ror     Cans
-        ror     Dans
-        inc     Eans
-        breq    L_ffloattoint32_Mantshifted//17
-        lsr     Aans
-        ror     Bans
-        ror     Cans
-        ror     Dans
-        inc     Eans
-        breq    L_ffloattoint32_Mantshifted//23
 
-	L_ffloattoint32_Expneg:
-        cpi     Eans,    0xfe
-        brlt    L_ffloattoint32_Exps2
-            cpi     Aans,    0xfd
-            brlt    L_ffloattoint32_denormb3
-                ldi     ShiftV,  0x80
-                rjmp    L_ffloattoint32_normset
-            L_ffloattoint32_denormb3:
-                ldi    ShiftV,  0x40
-                rjmp   L_ffloattoint32_normset
-        L_ffloattoint32_Exps2:
-            cpi    Atp,    0xff
-            brlt   L_ffloattoint32_denorms1
-                ldi    ShiftV,  0x20
-                rjmp   L_ffloattoint32_normset
-            L_ffloattoint32_denorms1:
-                ldi    ShiftV,  0x10
-        L_ffloattoint32_normset:
-
-        mul     Aans,    ShiftV
-        movw    Btp,   r0
-        mul     Cans,    ShiftV
-        movw     Dtp,   r0
-        mul     Bans,    ShiftV
-        add     Ctp,   r0
-        adc     Btp,    r1
-        mul     Dans,    ShiftV
-        add     Dtp,   r1
-        movw    Bans,   Btp
-        movw    Dans,   Dtp
+    subi    Eans,   0x08
+    L_ffloattoint32_Mantnshifted:
+    lsr     Aans
+    ror     Bans
+    ror     Cans
+    ror     Dans
+    inc     Eans
+    brne    L_ffloattoint32_Mantnshifted
 
 L_ffloattoint32_Mantshifted:
     brtc    L_ffloattoint32_Ansnneg
@@ -552,47 +389,13 @@ _ZN17fast_float_32_avr9FastFloat9toint16_tEv:
             clr     Aans
 
 	L_ffloattoint16_Expb8:
-    subi    Eans,   0x04
-    brmi   L_ffloattoint16_Expneg
-        subi    Eans,   0x04
-        breq    L_ffloattoint16_Mantshifted//5
-        lsr     Aans
-        ror     Bans
-        inc     Eans
-        breq    L_ffloattoint16_Mantshifted//11
-        lsr     Aans
-        ror     Bans
-        inc     Eans
-        breq    L_ffloattoint16_Mantshifted//17
-        lsr     Aans
-        ror     Bans
-        inc     Eans
-        breq    L_ffloattoint16_Mantshifted//23
 
-	L_ffloattoint16_Expneg:
-        cpi     Eans,    0xfe
-        brlt    L_ffloattoint16_Exps2
-            cpi     Aans,    0xfd
-            brlt    L_ffloattoint16_denormb3
-                ldi     ShiftV,  0x80
-                rjmp    L_ffloattoint16_normset
-            L_ffloattoint16_denormb3:
-                ldi    ShiftV,  0x40
-                rjmp   L_ffloattoint16_normset
-        L_ffloattoint16_Exps2:
-            cpi    Atp,    0xff
-            brlt   L_ffloattoint16_denorms1
-                ldi    ShiftV,  0x20
-                rjmp   L_ffloattoint16_normset
-            L_ffloattoint16_denorms1:
-                ldi    ShiftV,  0x10
-        L_ffloattoint16_normset:
-
-        mul     Aans,    ShiftV
-        movw    Btp,   r0
-        mul     Bans,    ShiftV
-        adc     Btp,    r1
-        movw    Bans,   Btp
+    subi    Eans,   0x08
+    L_ffloattoint16_Mantnshifted:
+    lsr     Aans
+    ror     Bans
+    inc     Eans
+    brne    L_ffloattoint16_Mantnshifted
 
 L_ffloattoint16_Mantshifted:
     brtc    L_ffloattoint16_Ansnneg
@@ -634,41 +437,11 @@ _ZN17fast_float_32_avr9FastFloat9toint8_tEv:
 
 	L_ffloattoint8_Expb0:
 
-    subi    Eans,   0x04
-    brmi   L_ffloattoint8_Expneg
-        subi    Eans,   0x04
-        breq    L_ffloattoint8_Mantshifted//5
-        lsr     Aans
-        inc     Eans
-        breq    L_ffloattoint8_Mantshifted//11
-        lsr     Aans
-        inc     Eans
-        breq    L_ffloattoint8_Mantshifted//17
-        lsr     Aans
-        inc     Eans
-        breq    L_ffloattoint8_Mantshifted//23
-
-	L_ffloattoint8_Expneg:
-        cpi     Eans,    0xfe
-        brlt    L_ffloattoint8_Exps2
-            cpi     Aans,    0xfd
-            brlt    L_ffloattoint8_denormb3
-                ldi     ShiftV,  0x80
-                rjmp    L_ffloattoint8_normset
-            L_ffloattoint8_denormb3:
-                ldi    ShiftV,  0x40
-                rjmp   L_ffloattoint8_normset
-        L_ffloattoint8_Exps2:
-            cpi    Atp,    0xff
-            brlt   L_ffloattoint8_denorms1
-                ldi    ShiftV,  0x20
-                rjmp   L_ffloattoint8_normset
-            L_ffloattoint8_denorms1:
-                ldi    ShiftV,  0x10
-        L_ffloattoint8_normset:
-
-        mul     Aans,    ShiftV
-        mov    Aans,   r0
+    subi    Eans,   0x08
+    L_ffloattoint8_Mantnshifted:
+    lsr     Aans
+    inc     Eans
+    brne    L_ffloattoint8_Mantnshifted
 
 L_ffloattoint8_Mantshifted:
     brtc    L_ffloattoint8_Ansnneg
@@ -767,7 +540,6 @@ _ZN17fast_float_32_avrplENS_9FastFloatES0_:
         lsr     Atp
         ror     Btp
         ror     Ctp
-        dec     ExpD
         rjmp    L_plus_Mantshifted//20
 	L_plus_ExpDb5:
         cpi     ExpD,    0x07
@@ -800,41 +572,37 @@ _ZN17fast_float_32_avrplENS_9FastFloatES0_:
     L_plus_Mantshifted:
     brtc    L_plus_expneqSbitsame
         bst     Aans,    7
+        dec     Eans
         lsl     Cans
         rol     Bans
         rol     Aans
         sub     Cans,    Ctp
         sbc     Bans,    Btp
         sbc     Aans,    Atp
-        brcs    L_plus_nv
-            ror     Aans
-            ror     Bans
-            ror     Cans
-            adc     Cans,   r1
-            adc     Bans,   r1
-            adc     Aans,   r1
-            inc     Eans
-        L_plus_nv:
-        dec     Eans
+        brcc    L_plus_v
+        brpl    L_plus_ansdenorm
         bld     Aans,    7
         ret//14//18
     L_plus_expneqSbitsame:
-        lsr     Atp
+        bst     Aans,    7
+        sec
+        ror     Atp
         ror     Btp
         ror     Ctp
-        add     Cans,    Ctp
+        adc     Cans,    Ctp
         adc     Bans,    Btp
         adc     Aans,    Atp
-        brvc    L_plus_nv2
+        brcc    L_plus_nv2
+        L_plus_v:
             ror     Aans
             ror     Bans
             ror     Cans
             adc     Cans,   r1
             adc     Bans,   r1
             adc     Aans,   r1
-            subi     Aans,    0x40
             inc     Eans
         L_plus_nv2:
+        bld     Aans,    7
         ret//11/15
 
     L_plus_expeq:
@@ -854,46 +622,45 @@ _ZN17fast_float_32_avrplENS_9FastFloatES0_:
         ret
 
         L_plus_expeqSbitnsame:
-        bst     Atp,    7
-        sub     Ctp,     Cop2
-        sbc     Btp,     Bop2
-        sbc     Atp,     Aop2
+        bst     Aans,    7
+        sub     Cans,     Cop2
+        sbc     Bans,     Bop2
+        sbc     Aans,     Aop2
         
         brmi    L_plus_ansnneg
             bst     Aop2,    7
-            neg     Atp
-            neg     Btp
-            sbc     Atp,   r1
-            neg     Ctp
-            sbc     Btp,   r1
-            sbc     Atp,   r1
+            neg     Aans
+            neg     Bans
+            sbc     Aans,   r1
+            neg     Cans
+            sbc     Bans,   r1
+            sbc     Aans,   r1
         L_plus_ansnneg:
+        L_plus_ansdenorm:
 
-        andi     Atp,   0x7f
+        andi     Aans,   0x7f
         brne   L_plus_denorms8
-            tst     Btp
+            tst     Bans
             brne    L_plus_denorms10
-                tst     Ctp
+                tst     Cans
                 brne    L_plus_nonnul
                     ldi     Eop1,    0x80
                     ret
                 L_plus_nonnul:
-                    mov     Atp,    Ctp
-                    clr     Atp
-                    clr     Ctp
+                    mov     Aans,    Cans
+                    clr     Aans
+                    clr     Cans
                     subi    Eop1,    0x10
                     rjmp   L_plus_denorms8
             L_plus_denorms10:
-                mov    Atp,    Btp
-                mov    Btp,    Ctp
-                clr    Ctp
+                mov    Aans,    Bans
+                mov    Bans,    Cans
+                clr    Cans
                 subi   Eop1,    0x08
         L_plus_denorms8:
 
         cpi    Atp,    0x10
         brlo   L_plus_denormb4
-            movw    Bans,    Btp
-            mov     Cans,    Ctp
             dec     Eans
             lsl     Cans
             rol     Bans
@@ -910,6 +677,8 @@ _ZN17fast_float_32_avrplENS_9FastFloatES0_:
             rol     Aans
             rjmp    L_plus_ansnorm
         L_plus_denormb4:
+            movw    Btp,    Bans
+            mov     Ctp,    Cans
             cpi     Atp,    0x04
             brlo    L_plus_denormb6
                 cpi     Atp,    0x08
@@ -939,6 +708,7 @@ _ZN17fast_float_32_avrplENS_9FastFloatES0_:
         mov     Cans,   r0
         add     Bans,   r1
         clr     r1
+
 	L_plus_ansnorm:
     bld     Aans,   7
 	ret

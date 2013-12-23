@@ -20,7 +20,7 @@ public:
     inline FastFloat(const int32_t value);//Constructor which takes a int32_t type
     inline FastFloat(const int16_t value);//Constructor which takes a int16_t type
     inline FastFloat(const int8_t value);//Constructor which takes a int8_t type
-    inline FastFloat(const uint8_t nexp, const uint8_t nlsb, const int16_t nmsb);//Constructor which takes raw byte
+    inline FastFloat(const uint8_t nexp, const uint8_t nlsb, const int16_t nmsb);//Constructor which takes raw bytes
     
     inline operator float();//Conversion operator to float type
     inline operator int32_t();//Conversion operator to int32_t type

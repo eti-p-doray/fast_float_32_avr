@@ -15,13 +15,13 @@ using namespace fast_float_32_avr;
 void main(void)
 {
     USART::init();
-    FastFloat a = 1.5f;//This is the simpliest way to set a FastFloat variable
-    FastFloat b = 2.0f;
+    FastFloat a = 2.0f;//This is the simpliest way to set a FastFloat variable
+    FastFloat b = 1.0f;
     FastFloat c = 0;
         
     USART::write(0x47);//This is the initializer I use to communicate with my computer
     USART::write(0xB1);
-    USART::write(uint8_t(a.get()>>24));//This is a "temporary" way to send data throug serial
+    USART::write(uint8_t(a.get()>>24));//This is a "temporary" way to send data through serial
     USART::write(uint8_t(a.get()>>16));
     USART::write(uint8_t(a.get()>>8));
     USART::write(uint8_t(a.get()));
