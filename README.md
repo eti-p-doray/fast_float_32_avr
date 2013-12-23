@@ -40,15 +40,16 @@ This software use a serial port to interface with my computer.
 Compatibility:
 
 Since most of the software is programmed in assembly, the compatibility may be limited.
-Since the atmega and the atxmega microcontrollers (used by the arduino microcontrollers) 
-all use the same instruction set as the one tested, they should work.
+Since the atmega and the atxmega microcontrollers (used by most arduino microcontrollers) 
+all provide the required instruction set as the one tested, they should work.
 
 ===============
 
 Performance:
 
 The performances of this software are compared with the default float type implementation from avr-gcc 4.8.1
-The microcontroller counter is used to compute the execution time. Since the execution time of
+The microcontroller counter is used to compute the execution time. The table show the number of clock cycle required
+to execute the operation, including acces to memory. Since the execution time of
 a float operation vary in each case, the \# clock cycle is an average of 256 operations with random numbers.
 
 <MTMarkdownOptions output='html4'>
@@ -60,12 +61,12 @@ a float operation vary in each case, the \# clock cycle is an average of 256 ope
     </tr>
     <tr>
     <td>addition</td>
-    <td>65.4</td>
+    <td>68.2</td>
     <td>149.0</td>
     </tr>
     <tr>
     <td>soustraction</td>
-    <td>74.2</td>
+    <td>75.2</td>
     <td>151.7</td>
     </tr>
     <tr>
