@@ -28,8 +28,8 @@ Using this software as a library in your project<br/>
 
 The software may be used with the arduino environment<br/>
 Including the FastFloat software as a library in the arduino environment<br/>
-1-Copy the FastFloat files in your arduino lybrary folder. The instructions for a manual installation are found at
-this link : http://arduino.cc/en/Tutorial/ArduinoISP<br/>
+1-Copy the FastFloat files in your arduino library folder (Only the FastFloat.cpp, FastFloat_Assembly.S and the FastFloat.h files). The instructions for a manual installation are found at
+this link : http://arduino.cc/en/Guide/Libraries<br/>
 2-Include the library in your sketch and use it!<br/>
 
 The provided main.cpp is an exemple that allows to test FastFloat class' function.
