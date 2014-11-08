@@ -3,8 +3,10 @@ fast_float_32_avr
 
 32 bit floating point math implementation optimized for AVR microcontrollers
 
+When developing applications on embedded systems, the computational power of microcontrollers is a limiting factor.
 This software is an implementation of floating point numbers wich allows the user to make basic 
-operations on float type faster than with the compiler on an AVR micocontroller.
+operations on float type faster than using the compiler implementation on an AVR micocontroller.
+I developed this library to increase computation possibilities on microcontrollers, more specifically, to allow faster digital signal processing.
 
 =================
 
@@ -42,6 +44,7 @@ Compatibility:
 Since most of the software is programmed in assembly, the compatibility may be limited.
 Since the atmega and the atxmega microcontrollers (used by most arduino microcontrollers) 
 all provide the required instruction set as the one tested, they should work.
+The library is compatible on AVR based arduinos, such as arduino UNO.
 
 ===============
 
