@@ -18,31 +18,21 @@ void main(void)
     FastFloat a = 2.0f;//This is the simpliest way to set a FastFloat variable
     FastFloat b = 1.0f;
     FastFloat c = 0;
-        
+    
     USART::write(0x47);//This is the initializer I use to communicate with my computer
     USART::write(0xB1);
-    USART::write(uint8_t(a.get()>>24));//This is a "temporary" way to send data through serial
-    USART::write(uint8_t(a.get()>>16));
-    USART::write(uint8_t(a.get()>>8));
-    USART::write(uint8_t(a.get()));
-    USART::write(uint8_t(b.get()>>24));
-    USART::write(uint8_t(b.get()>>16));
-    USART::write(uint8_t(b.get()>>8));
-    USART::write(uint8_t(b.get()));
+    USART::write(a);
+    USART::write(b);
     
-    uint16_t i = 0;
     TCCR1A = 0x00;
     TCCR1B = 0x01;
     TCNT1 = 0x00;//The counter registers are set for test purpose
-
-    c = a+b;
+    
+    c = a*b;//The FastFloat implementation is used
     
     i = TCNT1;//This gives the # clock cycle of the operation
     
-    USART::write(uint8_t(c.get()>>24));
-    USART::write(uint8_t(c.get()>>16));
-    USART::write(uint8_t(c.get()>>8));
-    USART::write(uint8_t(c.get()));
+    USART::write(FastFloat(c));
     USART::write(uint8_t(i>>8));
     USART::write(uint8_t(i));
     
